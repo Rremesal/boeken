@@ -9,7 +9,7 @@
     <section>
         <article>
             <main class="flex justify-center">
-                <form class="flex flex-col bg-customprimary w-96 p-4" method="POST" action="{{ $book ? route('books.update', $book) : route('books.store') }}">
+                <form class="flex flex-col border border-1 bg-blue-600 dark:bg-customprimary rounded-md w-96 p-4" method="POST" action="{{ $book ? route('books.update', $book) : route('books.store') }}">
                     @csrf
                     @method($book ? 'PUT' : 'POST')
                     <x-input name="title" label="Title" type="text" value="{{ $book ? old('title', $book->title) : '' }}"/>
