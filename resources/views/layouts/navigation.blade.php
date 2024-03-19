@@ -24,6 +24,7 @@
                 </div>
             </div>
 
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -56,6 +57,9 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                <div class="hidden -me-2 space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-toggle></x-toggle>
+                </div>
             </div>
 
             <!-- Hamburger -->
