@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Author;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,17 @@ class BookFactory extends Factory
      */
     public function definition(): array
     {
+        $author = Author::create([
+            'description' => fake()->text(40),
+            'user_id' => 12,
+        ]);
+
         return [
-            //
+            'isbn' => fake()->randomNumber(),
+            'title' => fake()->jobTitle(),
+            'description' => fake()->text(50),
+            'pages_amount' => fake()->numberBetween(2, 500),
+            'author_id' => $author->id,
         ];
     }
 }

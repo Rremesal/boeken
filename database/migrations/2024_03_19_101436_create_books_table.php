@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('isbn')->unique();
             $table->string('title');
             $table->string('description');
-            $table->int('pages_amount');
+            $table->integer('pages_amount');
             $table->foreignId('author_id')->references('id')->on('authors');
             $table->timestamps();
         });
