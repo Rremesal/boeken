@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function shelves() {
+        return $this->hasMany(Shelf::class);
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
 }
