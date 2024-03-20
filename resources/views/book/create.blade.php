@@ -9,7 +9,7 @@
     <section>
         <article>
             <main class="flex justify-center">
-                <form class="flex flex-col border border-1 bg-blue-600 dark:bg-customprimary rounded-md w-96 p-4" method="POST" action="{{ $book ? route('books.update', $book) : route('books.store') }}">
+                <form enctype="multipart/form-data" class="flex flex-col border border-1 bg-blue-600 dark:bg-customprimary rounded-md w-96 p-4" method="POST" action="{{ $book ? route('books.update', $book) : route('books.store') }}">
                     @csrf
                     @method($book ? 'PUT' : 'POST')
                     <x-input name="title" label="Title" type="text" value="{{ $book ? old('title', $book->title) : '' }}"/>
@@ -20,10 +20,19 @@
                         @error('description')
                             <p class="text-red-500">{{ $message }}</p>
                         @enderror
+                    <x-input name="isbn" label="ISBN" type="text" value="{{ $book ? old('isbn', $book->isbn) : '' }}"/>
+                        @error('isbn')
+                            <p class="text-red-500">{{ $message }}</p>
+                        @enderror
                     <x-input name="pages_amount" label="Amount of pages" type="number" min="10" value="{{ $book ? old('pages_amount', $book->pages_amount) : '' }}"/>
                         @error('pages_amount')
                             <p class="text-red-500">{{ $message }}</p>
                         @enderror
+                    <label class="text-blue-300 font-bold" for="image_path">Image</label>
+                    <input class="bg-white px-3 py-2 rounded-md border border-1" type="file" name="image_path" id="image_path">
+                    @error('image_path')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                     <label class="text-blue-300 font-bold" for="author_id">Author</label>
                     <select class="mb-2" id="author_id" name="author_id">
                         @foreach ($authors as $author)

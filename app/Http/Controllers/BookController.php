@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
     private $rules = [
         'title' => ['required'],
         'description' => ['required'],
-        'pages_amount' => ['required', 'min:10'],
+        'isbn' => ['required'],
+        'pages_amount' => ['required', 'min_digits:2', 'numeric'],
+        'image_path' => [],
         'author_id' => ['required']
     ];
 
@@ -29,6 +32,11 @@ class BookController extends Controller
 
     public function store() {
         $data = request()->validate($this->rules);
+
+
+        $path = request()->file('image_path')->store('/images');
+
+        $data['image_path'] = $path;
 
         Book::create($data);
 

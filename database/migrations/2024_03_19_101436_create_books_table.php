@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('pages_amount');
+            $table->string('image_path')->nullable();
             $table->foreignId('author_id')->references('id')->on('authors');
             $table->timestamps();
         });
