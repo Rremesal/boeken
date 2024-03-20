@@ -1,4 +1,4 @@
-@props(['class' => null, 'label', 'type', 'name', 'value' => null, 'min' => null, 'max' => null, 'required' => false])
+@props(['class' => null, 'label' => null, 'type', 'name', 'value' => null, 'min' => null, 'max' => null, 'required' => false])
 <div class="flex flex-col">
     <label class="text-blue-300 font-bold" for="{{ $name }}">{{ $label }}</label>
     @if ($type === 'textarea')

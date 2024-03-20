@@ -10,6 +10,6 @@ class Genre extends Model
     use HasFactory;
 
     public function books() {
-        return $this->hasManyThrough(Book::class, GenreBook::class);
+        return $this->hasManyThrough(Book::class, GenreBook::class, 'genre_id', 'id', 'id', 'book_id');
     }
 }

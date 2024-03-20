@@ -23,7 +23,7 @@ class BookFactory extends Factory
         ]);
 
         return [
-            'isbn' => fake()->randomNumber(),
+            'isbn' => fake()->randomNumber().fake()->randomNumber(),
             'title' => fake()->jobTitle(),
             'description' => fake()->text(50),
             'pages_amount' => fake()->numberBetween(2, 500),

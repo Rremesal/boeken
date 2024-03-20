@@ -18,6 +18,6 @@ class Book extends Model
     }
 
     public function genres() {
-        return $this->hasManyThrough(Genre::class, GenreBook::class);
+        return $this->hasManyThrough(Genre::class, GenreBook::class, 'book_id', 'id', 'id', 'genre_id');
     }
 }
