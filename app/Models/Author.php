@@ -9,9 +9,9 @@ class Author extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'description'];
+    protected $fillable = ['name', 'description', 'profile_pic_path'];
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function books() {
+        return $this->hasMany(Book::class);
     }
 }
