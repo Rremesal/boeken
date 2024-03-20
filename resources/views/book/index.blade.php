@@ -27,7 +27,7 @@
                                 <td class="py-3 px-2">{{ $book->title }}</td>
                                 <td class=" hidden md:block md:border-0 py-3 px-2">{{ $book->description }}</td>
                                 <td class="py-3 px-2">{{ $book->pages_amount }}</td>
-                                <td class="flex gap-2 py-3 px-2">
+                                <td class="flex text-white gap-2 py-3 px-2">
                                     <a href="{{ route('books.edit', $book) }}" class="h-10 w-10 flex justify-center items-center rounded-md hover:bg-orange-300 cursor-pointer bg-orange-500"><i class=" fa-solid fa-pen-to-square"></i></a>
                                     <form method="POST" action="{{ route('books.destroy', $book) }}">
                                         @csrf
