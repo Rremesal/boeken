@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -19,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/books', BookController::class);
+    Route::resource('/authors', AuthorController::class);
 });
 
 Route::get('/role', [RoleController::class, 'index']);

@@ -36,7 +36,7 @@
                     <label class="text-blue-300 font-bold" for="author_id">Author</label>
                     <select class="mb-2" id="author_id" name="author_id">
                         @foreach ($authors as $author)
-                            <option value="{{ $author->id }}">{{ $author->user->name }}</option>
+                            <option value="{{ $author->id }}">{{ $author->name }}</option>
                         @endforeach
                     </select>
                     @error('author_id')

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('profile_pic_path')->nullable();
-            $table->string('Description');
+            $table->text('description');
+            $table->boolean('isDeleted')->default(false);
             $table->timestamps();
         });
     }

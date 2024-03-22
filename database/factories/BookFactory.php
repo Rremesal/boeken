@@ -18,8 +18,8 @@ class BookFactory extends Factory
     public function definition(): array
     {
         $author = Author::create([
+            'name' => 'Stephen King',
             'description' => fake()->text(40),
-            'user_id' => 12,
         ]);
 
         return [

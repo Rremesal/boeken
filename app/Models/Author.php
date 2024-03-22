@@ -9,7 +9,7 @@ class Author extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'profile_pic_path'];
+    protected $fillable = ['name', 'description', 'profile_pic_path', 'isDeleted'];
 
     public function books() {
         return $this->hasMany(Book::class);

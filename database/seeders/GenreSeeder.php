@@ -19,8 +19,8 @@ class GenreSeeder extends Seeder
         Genre::factory(5)->create();
 
         $author = Author::create([
+            'name' => 'Ayn Rand',
             'description' => fake()->text(40),
-            'user_id' => 12,
         ]);
 
         $book = Book::create([
