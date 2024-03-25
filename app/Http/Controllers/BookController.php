@@ -32,9 +32,10 @@ class BookController extends Controller
 
     public function store() {
         $data = request()->validate($this->rules);
+        $file = request()->file('image_path');
 
 
-        $path = request()->file('image_path')->store('/images');
+        $path = Storage::putFileAs('public/images/books', $file,  $data['title'].'.'.$file->extension());
 
         $data['image_path'] = $path;
 

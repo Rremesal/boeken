@@ -24,11 +24,10 @@
                             <form class=" col-start-2 row-start-1" method="POST" action="{{ route('authors.destroy', $author) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="dark:text-white text-red-500 hover:underline col-start-2 row-start-2" type="submit" >Delete</button>
+                                <button class=" text-red-500 hover:underline col-start-2 row-start-2" type="submit" >Delete</button>
                             </form>
                             <a href="{{ route('authors.show', $author) }}"
-                                class=" dark:text-white text-blue-400 hover:underline col-start-2 row-start-2 w-full text-end">Lees
-                                meer...</a>
+                                class=" dark:text-white text-blue-400 hover:underline col-start-2 row-start-2 w-full text-end">Read more...</a>
                         </div>
                     </div>
 
