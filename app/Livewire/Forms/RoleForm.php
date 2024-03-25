@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Role;
 
 class RoleForm extends Form
 {
-    public ?Role $role;
+    public ?Role $role = null;
 
     #[Validate('required')]
     public $name = '';
@@ -16,21 +16,24 @@ class RoleForm extends Form
 
     public function set(Role $role) {
         $this->role = $role;
-        $this->name = $role->exists ? $role->name : '';
+        $this->name = $role->name;
     }
 
-    public function store() {
-        $this->validate();
+    public function save() {
+        if($this->role) {
+            $this->update();
+        } else {
+            $this->store();
+        }
+    }
 
-        Role::create($this->all());
+    private function store() {
+        Role::create($this->validate());
         $this->reset();
     }
 
-    public function update() {
-        $this->validate();
-
-        $this->role->update($this->all());
-
+    private function update() {
+        $this->role->update($this->validate());
         $this->reset();
     }
 }

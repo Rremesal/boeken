@@ -10,26 +10,17 @@ class CreateRole extends Component
 {
     public RoleForm $form;
 
-
-    protected $listeners = ['newRoleSelected' => 'set'];
-
-
-    public function mount(Role $role) {
+    public function mount($role) {
+        if(!$role) return;
         $this->form->set($role);
     }
 
-    public function set(Role $role) {
+    public function set($role) {
         $this->form->set($role);
     }
 
     public function save() {
-        if($this->form->role) {
-            $this->form->role->update();
-        } else {
-            $this->form->store();
-        }
-
-
+        $this->form->save();
         return redirect('/role');
     }
 

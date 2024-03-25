@@ -8,7 +8,12 @@ use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
     public function index() {
-        $roles = Role::all();
+        $roles = Role::with('permissions')->get();
         return view('role.index', ['roles' => $roles]);
+    }
+
+    public function edit(Role $role) {
+        $roles = Role::with('permissions')->get();
+        return view('role.index', ['roles' => $roles, 'editRole' => $role]);
     }
 }

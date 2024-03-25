@@ -23,6 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/authors', AuthorController::class);
 });
 
-Route::get('/role', [RoleController::class, 'index']);
+Route::resource('/roles', RoleController::class);
 
 require __DIR__.'/auth.php';
