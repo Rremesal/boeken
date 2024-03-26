@@ -33,6 +33,12 @@
                     @error('image_path')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror
+                    <label class="text-blue-300 font-bold">Genres</label>
+                    <div class="flex flex-col flex-wrap h-32">
+                        @foreach ($genres as $genre)
+                            <input type="checkbox" {{ $genre['set'] ? 'checked' : '' }} value="{{ $genre->id }}" name="genres[]"/><label>{{ $genre->name }}</label>
+                        @endforeach
+                    </div>
                     <label class="text-blue-300 font-bold" for="author_id">Author</label>
                     <select class="mb-2" id="author_id" name="author_id">
                         @foreach ($authors as $author)
