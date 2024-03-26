@@ -1,10 +1,20 @@
 const toggle = document.getElementById('toggle');
 const html = document.getElementById('html');
 
+let currentTheme = localStorage.getItem('theme') || 'light';
+
+if (currentTheme === 'dark') {
+    toggle.classList.add('text-white');
+    html.classList.add('dark');
+} else {
+    toggle.classList.add('text-black');
+    html.classList.add('light');
+}
+
+
 
 toggle.addEventListener('click', (ev) => {
-    let currentTheme = localStorage.getItem('theme');
-
+    console.log('click')
     if(currentTheme === "dark") {
         toggle.classList.remove('text-white');
         toggle.classList.add('text-black')
@@ -20,6 +30,5 @@ toggle.addEventListener('click', (ev) => {
         html.classList.remove('light');
         html.classList.add('dark');
     }
-
 
 });

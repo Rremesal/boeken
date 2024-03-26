@@ -1,5 +1,5 @@
-import './bootstrap';
 import './toggle';
+import './bootstrap';
 
 import Alpine from 'alpinejs';
 
