@@ -2,34 +2,57 @@
 
 namespace App\Livewire\Forms;
 
+use Illuminate\Routing\RedirectController;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionForm extends Form
 {
-    public ?Permission $permission;
+    public ?Permission $permission = null;
 
     #[Validate('required')]
     public $name = '';
 
-    public function set(Permission $role) {
-        $this->permission = $role;
-        $this->name = $role->name;
+    public $role = null;
+
+    public function set(Permission $permission) {
+        $this->permission = $permission;
+        $this->name = $permission->name;
     }
 
-    public function store() {
-        $this->validate();
+    public function save() {
+        if($this->role) {
+            $this->role = Role::where('id', $this->role)->get()[0];
+        }
+        if($this->permission) {
+            $this->update($this->role);
+        } else {
+            $this->store($this->role);
+        }
+    }
 
-        Permission::create($this->all());
+    private function store(?Role $role) {
+        $permission = Permission::create($this->validate());
+        if($this->role)  $role->givePermissionTo($permission->name);
+
         $this->reset();
     }
 
-    public function update() {
-        $this->validate();
+    private function update(?Role $role) {
+        if(!$this->role) {
+            $associated_role = $this->permission->roles[0];
+            $associated_role->revokePermissionTo($this->permission);
 
-        $this->permission->update($this->all());
+            return redirect('/permissions');
+        }
 
+        if(!$role->hasPermissionTo($this->permission)) {
+            $role->givePermissionTo($this->permission);
+        }
+        $this->permission->update($this->validate());
         $this->reset();
     }
+
 }

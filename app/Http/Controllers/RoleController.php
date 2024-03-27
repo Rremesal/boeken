@@ -16,4 +16,10 @@ class RoleController extends Controller
         $roles = Role::with('permissions')->get();
         return view('role.index', ['roles' => $roles, 'editRole' => $role]);
     }
+
+    public function destroy(Role $role) {
+        $role->delete();
+
+        return redirect()->route('roles.index');
+    }
 }

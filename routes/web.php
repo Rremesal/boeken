@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/roles', RoleController::class);
+Route::resource('/permissions', PermissionController::class);
 
 require __DIR__.'/auth.php';

@@ -13,7 +13,6 @@ class RoleForm extends Form
     #[Validate('required')]
     public $name = '';
 
-
     public function set(Role $role) {
         $this->role = $role;
         $this->name = $role->name;

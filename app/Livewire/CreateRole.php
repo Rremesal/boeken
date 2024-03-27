@@ -15,13 +15,9 @@ class CreateRole extends Component
         $this->form->set($role);
     }
 
-    public function set($role) {
-        $this->form->set($role);
-    }
-
     public function save() {
         $this->form->save();
-        return redirect('/role');
+        return redirect('/roles');
     }
 
 
